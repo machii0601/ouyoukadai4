@@ -48,14 +48,6 @@ ActiveRecord::Schema.define(version: 2023_11_05_044302) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "bookcomments", force: :cascade do |t|
-    t.text "comment"
-    t.integer "user_id"
-    t.integer "book_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -73,7 +65,7 @@ ActiveRecord::Schema.define(version: 2023_11_05_044302) do
 
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
-    t.integer "follwed_id"
+    t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

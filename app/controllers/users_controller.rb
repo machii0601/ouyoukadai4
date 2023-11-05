@@ -35,6 +35,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def toggle_follow
+    user = User.find(params[:id])
+    if current_user.followings.include?(user)
+      current_user.unfollow(user.id)
+    else
+      current_user.follow(user.id)
+    end
+    redirect_to user
+  end
+
   private
 
   def user_params
