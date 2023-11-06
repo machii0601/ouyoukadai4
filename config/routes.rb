@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
     member do
       post 'toggle_follow', to: 'users#toggle_follow'
+      get 'followings', to: 'users#followings'
+      get 'followers', to: 'users#followers'
     end
   end
   resources :users, only: [:index,:show,:edit,:update]
