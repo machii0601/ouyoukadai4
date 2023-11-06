@@ -55,3 +55,16 @@
     </div>
   </nav>
 </header>
+<body>
+  	<div class='row'>
+    	<div class='mx-auto'>
+      <%= form_tag(search_path, method: :get) do %>
+        <%= text_field_tag(:query) %>
+        <%= select_tag(:search_target, options_for_select([["Book", "posts"], ["User", "users"]])) %>
+        <%= select_tag(:search_method, options_for_select([["完全一致", "exact"], ["前方一致", "prefix"], ["後方一致", "suffix"], ["部分一致", "partial"]])) %>
+        <%= submit_tag("検索") %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</body>

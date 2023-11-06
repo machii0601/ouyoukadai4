@@ -1,0 +1,12 @@
+<h1>Books search for "test"</h1>
+<h1><%= @search_target == "posts" ? "投稿" : "ユーザー" %></h1>
+<ul>
+  <% @results.each do |result| %>
+    <% if @search_target == "posts" %>
+      <li><%= link_to result.title, book_path(result) %></li>
+    <% else %>
+      <li><%= link_to result.name, user_path(result) %></li>
+    <% end %>
+  <% end %>
+</ul>
+
