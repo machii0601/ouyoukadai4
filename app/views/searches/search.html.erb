@@ -1,5 +1,6 @@
 <h1>Books search for "test"</h1>
   <table class='table table-hover table-inverse'>
+    <% if @search_target == "posts" %>
   <thead>
     <tr>
       <th></th>
@@ -9,18 +10,29 @@
     </tr>
   </thead>
   <tbody>
-      <tr><% @results.each do |result| %>
+     <% @results.each do |result| %>
+       <tr>
         <td><%= image_tag result.user.get_profile_image(50,50) %></td>
-        <td>
-            <% if @search_target == "posts" %>
-              <%= link_to result.title, book_path(result) %>
-            <% else %>
-              <%= link_to result.name, user_path(result) %>
-            <% end %>
-          <% end %>
-        </td>
-        <td></td>
+
+              <td><%= link_to result.title, book_path(result) %></td>
+              <td><%= result.body %></td>
       </tr>
+            <% end %>
+    <% else %>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+             <% @results.each do |result| %>
+            <tr>
+              <td><%= image_tag result.get_profile_image(50,50) %></td>
+              <td><%= link_to result.name, user_path(result) %></td>
+            </tr>
+          <% end %>
+      <% end %>
   </tbody>
 </table>
 

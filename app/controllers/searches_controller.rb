@@ -1,12 +1,13 @@
 class SearchesController < ApplicationController
   def search
+
     @search_target = params[:search_target]
     @search_method = params[:search_method]
     @query = params[:query]
     if @search_target == "posts"
       case @search_method
         when "exact"
-          @results = Book.where(title: @query)
+          @results = Book.where("title": @query)
         when "prefix"
           @results = Book.where("title LIKE ?", "#{@query}%")
         when "suffix"
